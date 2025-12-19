@@ -55,12 +55,9 @@ export function ApiKeySettings() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
-          hasKey
-            ? 'bg-success/10 border-success/30 text-success'
-            : 'bg-warning/10 border-warning/30 text-warning'
-        }`}
+        className="p-2 rounded-lg bg-card border border-border hover:bg-accent transition-colors relative"
         title={hasKey ? t('apiKeyConfigured') : t('apiKeyConfigure')}
+        aria-label="API Key Settings"
       >
         <svg
           className="w-5 h-5"
@@ -75,9 +72,12 @@ export function ApiKeySettings() {
             d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
           />
         </svg>
-        <span className="text-sm font-medium hidden sm:inline">
-          {hasKey ? t('apiKeyLabel') : t('apiKeySet')}
-        </span>
+        {/* Status indicator dot */}
+        <span
+          className={`absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-card ${
+            hasKey ? 'bg-success' : 'bg-warning'
+          }`}
+        />
       </button>
 
       {isOpen && (

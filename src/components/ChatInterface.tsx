@@ -238,7 +238,7 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
                     {analysisSteps.map((step) => (
                       <div key={step.id} className="flex items-center gap-3">
                         {step.status === 'completed' ? (
-                          <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 text-success flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                         ) : step.status === 'processing' ? (

@@ -66,15 +66,15 @@ export function UploadCard({ onImageUpload }: UploadCardProps) {
 
   return (
     <div className="card">
-      <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
+      <h2 className="text-lg font-semibold mb-4 text-foreground">
         {t('uploadTitle')}
       </h2>
 
       <div
         className={`relative border-2 border-dashed rounded-lg p-4 md:p-8 transition-colors ${
           isDragging
-            ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
-            : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
+            ? 'border-primary bg-primary/10'
+            : 'border-border hover:border-primary/50'
         }`}
         onDrop={handleDrop}
         onDragOver={(e) => {
@@ -97,24 +97,24 @@ export function UploadCard({ onImageUpload }: UploadCardProps) {
                 setPreview(null)
                 onImageUpload('')
               }}
-              className="w-full btn-primary bg-gray-500 hover:bg-gray-600"
+              className="w-full btn-primary bg-secondary text-secondary-foreground hover:opacity-80"
             >
               {t('uploadReplace')}
             </button>
           </div>
         ) : (
           <div className="text-center space-y-4">
-            <svg className="mx-auto h-12 w-12 md:h-16 md:w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="mx-auto h-12 w-12 md:h-16 md:w-16 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <div className="space-y-2">
-              <p className="text-base font-medium text-gray-700 dark:text-gray-300">
+              <p className="text-base font-medium text-foreground">
                 {t('uploadDrop')}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 {t('uploadBrowse')}
               </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500">
+              <p className="text-xs text-muted-foreground">
                 {t('uploadFormat')}
               </p>
             </div>
@@ -134,8 +134,8 @@ export function UploadCard({ onImageUpload }: UploadCardProps) {
         )}
       </div>
 
-      <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
-        <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+      <div className="mt-4 p-3 bg-muted rounded-lg border border-border">
+        <p className="text-xs text-muted-foreground leading-relaxed">
           {t('uploadTips')}
         </p>
       </div>
