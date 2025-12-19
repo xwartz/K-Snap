@@ -3,6 +3,7 @@ import { UploadCard } from './components/UploadCard'
 import { MacroSelector } from './components/MacroSelector'
 import { ResultCards } from './components/ResultCards'
 import { ThemeToggle } from './components/ThemeToggle'
+import { ApiKeySettings } from './components/ApiKeySettings'
 import { analyzeImage } from './utils/analyzer'
 import { useI18n } from './utils/i18n'
 import type { AnalyzeResponse } from './types'
@@ -25,29 +26,7 @@ function App() {
     setResult(null)
 
     try {
-      const isDev = import.meta.env.DEV
-      let data: AnalyzeResponse
-
-      if (isDev) {
-        data = await analyzeImage(image)
-      } else {
-        const response = await fetch("/api/analyze", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            image,
-          }),
-        })
-
-        if (!response.ok) {
-          throw new Error("Analysis request failed")
-        }
-
-        data = await response.json()
-      }
-
+      const data = await analyzeImage(image)
       setResult(data)
 
       setTimeout(() => {
@@ -79,7 +58,10 @@ function App() {
                 {t('subtitle')}
               </p>
             </div>
-            <ThemeToggle />
+            <div className="flex items-center gap-3">
+              <ApiKeySettings />
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </header>

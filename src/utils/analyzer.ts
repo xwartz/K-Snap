@@ -45,12 +45,12 @@ async function analyzeImageWithAI(
   image: string
 ): Promise<ImageAnalysisResponse> {
   const apiKey =
-    import.meta.env.VITE_OPENROUTER_API_KEY ||
-    import.meta.env.VITE_OPENAI_API_KEY
+    localStorage.getItem('openrouter_api_key') ||
+    localStorage.getItem('openai_api_key')
 
   if (!apiKey) {
     throw new Error(
-      "AI API key not configured. Please set VITE_OPENROUTER_API_KEY or VITE_OPENAI_API_KEY."
+      "Please configure your API key in the settings (top right corner)"
     )
   }
 
@@ -118,7 +118,7 @@ async function analyzeImageWithAI(
 - confidence 反映图片清晰度和分析可信度`
 
   try {
-    const apiUrl = import.meta.env.VITE_OPENROUTER_API_KEY
+    const apiUrl = localStorage.getItem('openrouter_api_key')
       ? "https://openrouter.ai/api/v1/chat/completions"
       : "https://api.openai.com/v1/chat/completions"
 
@@ -127,13 +127,13 @@ async function analyzeImageWithAI(
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
-        ...(import.meta.env.VITE_OPENROUTER_API_KEY && {
+        ...(localStorage.getItem('openrouter_api_key') && {
           "HTTP-Referer": window.location.origin,
           "X-Title": "Signal Trading Assistant",
         }),
       },
       body: JSON.stringify({
-        model: import.meta.env.VITE_OPENROUTER_API_KEY
+        model: localStorage.getItem('openrouter_api_key')
           ? "anthropic/claude-3.5-sonnet"
           : "gpt-4-vision-preview",
         messages: [
@@ -324,12 +324,12 @@ async function generateIntelligentDecision(params: {
     params
 
   const apiKey =
-    import.meta.env.VITE_OPENROUTER_API_KEY ||
-    import.meta.env.VITE_OPENAI_API_KEY
+    localStorage.getItem('openrouter_api_key') ||
+    localStorage.getItem('openai_api_key')
 
   if (!apiKey) {
     throw new Error(
-      "AI API key not configured. Please set VITE_OPENROUTER_API_KEY or VITE_OPENAI_API_KEY."
+      "Please configure your API key in the settings (top right corner)"
     )
   }
 
@@ -438,7 +438,7 @@ ${JSON.stringify(imageAnalysis, null, 2)}
 }`
 
   try {
-    const apiUrl = import.meta.env.VITE_OPENROUTER_API_KEY
+    const apiUrl = localStorage.getItem('openrouter_api_key')
       ? "https://openrouter.ai/api/v1/chat/completions"
       : "https://api.openai.com/v1/chat/completions"
 
@@ -447,13 +447,13 @@ ${JSON.stringify(imageAnalysis, null, 2)}
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
-        ...(import.meta.env.VITE_OPENROUTER_API_KEY && {
+        ...(localStorage.getItem('openrouter_api_key') && {
           "HTTP-Referer": window.location.origin,
           "X-Title": "Signal Trading Assistant",
         }),
       },
       body: JSON.stringify({
-        model: import.meta.env.VITE_OPENROUTER_API_KEY
+        model: localStorage.getItem('openrouter_api_key')
           ? "anthropic/claude-3.5-sonnet"
           : "gpt-4-turbo-preview",
         messages: [

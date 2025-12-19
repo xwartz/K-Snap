@@ -26,11 +26,16 @@
 pnpm install
 ```
 
-### 2. 配置环境变量
+### 2. 配置 API Key（可选，用于本地开发）
 
-创建 `.env.local` 文件（用于本地开发）：
+> **注意**：从现在开始，你不需要配置环境变量！API Key 可以直接在网页界面中设置。
+
+如果你想在本地开发时预先配置 API Key，可以创建 `.env.local` 文件：
 
 ```bash
+# 这些环境变量仅用于本地开发的便利性
+# 部署后，用户可以在网页界面中直接输入 API Key
+
 # OpenRouter API Key (推荐)
 VITE_OPENROUTER_API_KEY=your_api_key_here
 
@@ -38,7 +43,7 @@ VITE_OPENROUTER_API_KEY=your_api_key_here
 VITE_OPENAI_API_KEY=your_api_key_here
 ```
 
-> **注意**：开发环境使用 `VITE_` 前缀，部署到 Vercel 时在 Dashboard 配置不带前缀的环境变量（`OPENROUTER_API_KEY` 或 `OPENAI_API_KEY`）
+**但更推荐的方式是**：直接在网页右上角的"Set API Key"按钮中输入。
 
 ### 3. 本地开发
 
@@ -56,29 +61,22 @@ pnpm build
 
 ### 5. 部署到 Vercel
 
-#### 方式一：通过 Vercel Dashboard（推荐）
+#### 一键部署（推荐）
 
 1. **导入项目**
    - 访问 [Vercel Dashboard](https://vercel.com/new)
    - 选择你的 GitHub 仓库
    - 点击 Import
+   - **无需配置任何环境变量！**
+   - 点击 Deploy
 
-2. **配置环境变量**（重要！）
-   - 在项目设置中，进入 **Settings → Environment Variables**
-   - 添加以下环境变量：
-     ```
-     Name: OPENROUTER_API_KEY
-     Value: 你的 OpenRouter API Key
-     ```
-   - 选择所有环境：**Production**, **Preview**, **Development**
-   - 点击 Save
+2. **使用应用**
+   - 部署完成后，访问你的 Vercel 域名
+   - 点击右上角的 "Set API Key" 按钮
+   - 输入你的 OpenRouter 或 OpenAI API Key
+   - 开始使用！
 
-3. **重新部署**
-   - 返回 **Deployments** 页面
-   - 点击最新部署右侧的 **⋯** 菜单
-   - 选择 **Redeploy**
-
-#### 方式二：通过 Vercel CLI
+#### 通过 CLI 部署
 
 ```bash
 # 安装 Vercel CLI
@@ -87,45 +85,25 @@ npm i -g vercel
 # 登录
 vercel login
 
-# 部署
-vercel
-
-# 配置环境变量
-vercel env add OPENROUTER_API_KEY production
-vercel env add OPENROUTER_API_KEY preview
-vercel env add OPENROUTER_API_KEY development
-
-# 重新部署以应用环境变量
+# 部署（无需配置环境变量）
 vercel --prod
 ```
 
-#### 部署后验证
+#### 获取 API Key
 
-部署完成后，访问你的 Vercel 域名（如 `https://your-app.vercel.app`），上传一张交易图表测试 API 是否正常工作。
+- **OpenRouter** (推荐): https://openrouter.ai/keys
+- **OpenAI**: https://platform.openai.com/api-keys
 
-#### 常见问题排查
+#### 常见问题
 
-**问题：API 返回 500 错误**
+**Q: API Key 存储在哪里？**
+A: API Key 存储在你的浏览器 localStorage 中，不会发送到任何服务器。
 
-解决方案：
-1. 检查 Vercel Dashboard 中是否正确配置了 `OPENROUTER_API_KEY` 环境变量
-2. 确保环境变量已应用到所有环境（Production/Preview/Development）
-3. 重新部署项目以应用环境变量更改
-4. 查看 Vercel 的 **Functions** 日志，检查具体错误信息
+**Q: 我的 API Key 安全吗？**
+A: API Key 仅存储在你的浏览器本地，所有 AI API 调用都是从你的浏览器直接发送到 OpenRouter/OpenAI，不经过任何中间服务器。
 
-**问题：环境变量未生效**
-
-解决方案：
-1. 环境变量修改后必须重新部署才能生效
-2. 确保变量名正确：`OPENROUTER_API_KEY`（不带 `VITE_` 前缀）
-3. 检查是否选择了正确的环境（Production/Preview/Development）
-
-**问题：本地开发正常，部署后失败**
-
-解决方案：
-1. 本地使用 `VITE_OPENROUTER_API_KEY`（带前缀）
-2. Vercel 部署使用 `OPENROUTER_API_KEY`（不带前缀）
-3. 这是因为 Vite 环境变量和 Vercel Serverless Functions 环境变量的命名规则不同
+**Q: 为什么推荐 OpenRouter？**
+A: OpenRouter 支持多种 AI 模型（包括 Claude 3.5 Sonnet），价格更优惠，且 API 更稳定。
 
 ## 📖 使用指南
 
