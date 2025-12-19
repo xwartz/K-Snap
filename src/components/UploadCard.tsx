@@ -71,7 +71,7 @@ export function UploadCard({ onImageUpload }: UploadCardProps) {
       </h2>
 
       <div
-        className={`relative border-2 border-dashed rounded-lg p-8 transition-colors ${
+        className={`relative border-2 border-dashed rounded-lg p-4 md:p-8 transition-colors ${
           isDragging
             ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
             : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
@@ -90,7 +90,7 @@ export function UploadCard({ onImageUpload }: UploadCardProps) {
             <img
               src={preview}
               alt="Preview"
-              className="max-h-64 mx-auto rounded-lg shadow-md"
+              className="max-h-48 md:max-h-64 mx-auto rounded-lg shadow-md"
             />
             <button
               onClick={() => {
@@ -104,7 +104,7 @@ export function UploadCard({ onImageUpload }: UploadCardProps) {
           </div>
         ) : (
           <div className="text-center space-y-4">
-            <svg className="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="mx-auto h-12 w-12 md:h-16 md:w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <div className="space-y-2">

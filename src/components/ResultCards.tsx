@@ -10,8 +10,8 @@ export function ResultCards({ result }: ResultCardsProps) {
   const { detected, analysis, realtime, decision } = result
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
+    <div className="space-y-4 md:space-y-6">
+      <h2 className="text-lg font-semibold mb-3 md:mb-4 text-gray-900 dark:text-gray-100">
         {t("resultsTitle")}
       </h2>
 
@@ -21,17 +21,17 @@ export function ResultCards({ result }: ResultCardsProps) {
           {t("detection")}
         </h3>
         <div className="flex flex-wrap gap-2">
-          <span className="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+          <span className="inline-flex items-center px-2 md:px-3 py-1 rounded-md text-xs md:text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
             {detected.symbol}
           </span>
-          <span className="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+          <span className="inline-flex items-center px-2 md:px-3 py-1 rounded-md text-xs md:text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
             {detected.timeframe}
           </span>
-          <span className="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+          <span className="inline-flex items-center px-2 md:px-3 py-1 rounded-md text-xs md:text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
             {detected.priceRange}
           </span>
           <span
-            className={`inline-flex items-center px-3 py-1 rounded-md text-sm font-medium ${
+            className={`inline-flex items-center px-2 md:px-3 py-1 rounded-md text-xs md:text-sm font-medium ${
               analysis.confidence >= 0.7
                 ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
                 : analysis.confidence >= 0.5
@@ -47,7 +47,7 @@ export function ResultCards({ result }: ResultCardsProps) {
       {/* 下周宏观事件 */}
       {decision.macroEvents && decision.macroEvents.length > 0 && (
         <div className="card">
-          <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <h3 className="text-base font-semibold mb-3 md:mb-4 text-gray-800 dark:text-gray-200">
             {t('macroEvents')}
           </h3>
           <div className="space-y-3">
@@ -99,10 +99,10 @@ export function ResultCards({ result }: ResultCardsProps) {
       {/* 概率分布 */}
       {decision.probability && (
         <div className="card">
-          <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <h3 className="text-base font-semibold mb-3 md:mb-4 text-gray-800 dark:text-gray-200">
             {t('probabilityTitle')}
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-green-600 dark:text-green-400 font-medium">
@@ -112,9 +112,9 @@ export function ResultCards({ result }: ResultCardsProps) {
                   {decision.probability.bullish}%
                 </span>
               </div>
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 md:h-3">
                 <div
-                  className="bg-green-500 h-3 rounded-full transition-all"
+                  className="bg-green-500 h-2 md:h-3 rounded-full transition-all"
                   style={{ width: `${decision.probability.bullish}%` }}
                 ></div>
               </div>
@@ -129,9 +129,9 @@ export function ResultCards({ result }: ResultCardsProps) {
                   {decision.probability.bearish}%
                 </span>
               </div>
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 md:h-3">
                 <div
-                  className="bg-red-500 h-3 rounded-full transition-all"
+                  className="bg-red-500 h-2 md:h-3 rounded-full transition-all"
                   style={{ width: `${decision.probability.bearish}%` }}
                 ></div>
               </div>
@@ -146,9 +146,9 @@ export function ResultCards({ result }: ResultCardsProps) {
                   {decision.probability.neutral}%
                 </span>
               </div>
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 md:h-3">
                 <div
-                  className="bg-gray-500 h-3 rounded-full transition-all"
+                  className="bg-gray-500 h-2 md:h-3 rounded-full transition-all"
                   style={{ width: `${decision.probability.neutral}%` }}
                 ></div>
               </div>
@@ -166,15 +166,15 @@ export function ResultCards({ result }: ResultCardsProps) {
 
       {/* 技术分析 */}
       <div className="card">
-        <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
+        <h3 className="text-base font-semibold mb-3 md:mb-4 text-gray-800 dark:text-gray-200">
           {t('technicalAnalysis')}
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3 md:gap-4">
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
               {t('trend')}
             </p>
-            <p className="font-semibold text-base">
+            <p className="font-semibold text-sm md:text-base">
               {analysis.trend === "up"
                 ? "↑ 上涨"
                 : analysis.trend === "down"
@@ -186,7 +186,7 @@ export function ResultCards({ result }: ResultCardsProps) {
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
               {t('marketState')}
             </p>
-            <p className="font-semibold text-base">
+            <p className="font-semibold text-sm md:text-base">
               {analysis.marketState === "breakout"
                 ? "突破"
                 : analysis.marketState === "pullback"
@@ -218,14 +218,14 @@ export function ResultCards({ result }: ResultCardsProps) {
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
               {t('currentPrice')}
             </p>
-            <p className="font-semibold text-base">
+            <p className="font-semibold text-sm md:text-base">
               ${realtime.currentPrice.toLocaleString()}{" "}
               <span
-                className={
+                className={`text-xs md:text-sm ${
                   parseFloat(realtime.priceChange24h) >= 0
                     ? "text-green-600"
                     : "text-red-600"
-                }
+                }`}
               >
                 ({parseFloat(realtime.priceChange24h) >= 0 ? "+" : ""}
                 {realtime.priceChange24h}%)
@@ -236,13 +236,13 @@ export function ResultCards({ result }: ResultCardsProps) {
 
         {/* 技术指标 */}
         {analysis.indicators && (
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-100 dark:border-gray-800 pt-4">
+          <div className="mt-4 grid grid-cols-2 gap-3 md:gap-4 border-t border-gray-100 dark:border-gray-800 pt-4">
             {analysis.indicators.macd && (
               <div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
                   MACD
                 </p>
-                <p className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
+                <p className="font-medium text-xs md:text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
                   {analysis.indicators.macd.signal}
                 </p>
               </div>
@@ -253,11 +253,11 @@ export function ResultCards({ result }: ResultCardsProps) {
                   RSI
                 </p>
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold text-base">
+                  <span className="font-semibold text-sm md:text-base">
                     {analysis.indicators.rsi.value}
                   </span>
                   <span
-                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                    className={`inline-flex items-center px-1.5 md:px-2 py-0.5 rounded text-xs font-medium ${
                       analysis.indicators.rsi.signal === "overbought"
                         ? "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
                         : analysis.indicators.rsi.signal === "oversold"
@@ -279,9 +279,9 @@ export function ResultCards({ result }: ResultCardsProps) {
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
                   {t('resistanceLevels').split('压力位')[0] || '布林带'}
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span
-                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                    className={`inline-flex items-center px-1.5 md:px-2 py-0.5 rounded text-xs font-medium ${
                       analysis.indicators.bollingerBands.position === "upper"
                         ? "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
                         : analysis.indicators.bollingerBands.position === "lower"
@@ -308,9 +308,9 @@ export function ResultCards({ result }: ResultCardsProps) {
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
                   {t('volatility').split('波动率')[0] || '成交量'}
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span
-                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                    className={`inline-flex items-center px-1.5 md:px-2 py-0.5 rounded text-xs font-medium ${
                       analysis.indicators.volume.trend === "increasing"
                         ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
                         : analysis.indicators.volume.trend === "decreasing"
@@ -335,7 +335,7 @@ export function ResultCards({ result }: ResultCardsProps) {
           </div>
         )}
 
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">
               {t('supportLevels')}
@@ -382,29 +382,31 @@ export function ResultCards({ result }: ResultCardsProps) {
 
       {/* 操作建议 */}
       <div className="card">
-        <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
+        <h3 className="text-base font-semibold mb-3 md:mb-4 text-gray-800 dark:text-gray-200">
           {t('tradingRecommendations')}
         </h3>
 
         <div className="space-y-4">
           {/* 现货 */}
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-            <h4 className="font-semibold mb-3 text-blue-900 dark:text-blue-100">
+            <h4 className="font-semibold mb-2 md:mb-3 text-blue-900 dark:text-blue-100">
               {t('spot')}
             </h4>
-            <p className="text-sm mb-2">
-              <span className="text-gray-600 dark:text-gray-400">操作:</span>{" "}
-              <span className="font-medium">{decision.spot.action}</span>
-            </p>
-            <p className="text-sm mb-2">
-              <span className="text-gray-600 dark:text-gray-400">
-                价格区间:
-              </span>{" "}
-              <span className="font-mono font-medium text-primary-600 dark:text-primary-400">
-                {decision.spot.priceZone}
-              </span>
-            </p>
-            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+              <p className="text-sm">
+                <span className="text-gray-600 dark:text-gray-400">操作:</span>{" "}
+                <span className="font-medium">{decision.spot.action}</span>
+              </p>
+              <p className="text-sm">
+                <span className="text-gray-600 dark:text-gray-400">
+                  价格区间:
+                </span>{" "}
+                <span className="font-mono font-medium text-primary-600 dark:text-primary-400">
+                  {decision.spot.priceZone}
+                </span>
+              </p>
+            </div>
+            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed border-t border-blue-100 dark:border-blue-800/50 pt-2 mt-2">
               {decision.spot.logic}
             </p>
           </div>
@@ -431,20 +433,22 @@ export function ResultCards({ result }: ResultCardsProps) {
                   : "中性"}
               </span>
             </div>
-            <p className="text-sm mb-2">
-              <span className="text-gray-600 dark:text-gray-400">入场点:</span>{" "}
-              <span className="font-medium">{decision.futures.entry}</span>
-            </p>
-            <p className="text-sm mb-2">
-              <span className="text-gray-600 dark:text-gray-400">止损位:</span>{" "}
-              <span className="font-medium">{decision.futures.stopLoss}</span>
-            </p>
-            <p className="text-sm">
-              <span className="text-gray-600 dark:text-gray-400">
-                风险收益比:
-              </span>{" "}
-              <span className="font-medium">{decision.futures.riskReward}</span>
-            </p>
+            <div className="grid grid-cols-1 gap-2 mb-2">
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-gray-600 dark:text-gray-400">入场点:</span>{" "}
+                <span className="font-medium">{decision.futures.entry}</span>
+              </div>
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-gray-600 dark:text-gray-400">止损位:</span>{" "}
+                <span className="font-medium">{decision.futures.stopLoss}</span>
+              </div>
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-gray-600 dark:text-gray-400">
+                  风险收益比:
+                </span>{" "}
+                <span className="font-medium">{decision.futures.riskReward}</span>
+              </div>
+            </div>
           </div>
 
           {/* 期权 */}

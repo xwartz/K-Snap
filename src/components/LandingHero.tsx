@@ -22,28 +22,28 @@ export function LandingHero({ onStart }: LandingHeroProps) {
              <ThemeToggle />
          </header>
 
-         <main className="flex flex-1 flex-col items-center justify-center text-center p-4">
+         <main className="flex flex-1 flex-col items-center justify-center text-center p-4 md:p-8">
             <div className="max-w-3xl space-y-6 animate-fade-in">
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-foreground transition-all duration-300">
                     {t('heroTitle')}
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-medium transition-all duration-300">
                     {t('heroSubtitle')}
                 </p>
-                <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed hidden sm:block">
                     {t('heroDescription')}
                 </p>
                 <div className="pt-4">
                     <button
                         onClick={onStart}
-                        className="btn-primary text-lg px-8 py-3 rounded-xl shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:scale-105 flex items-center justify-center mx-auto"
+                        className="btn-primary text-base md:text-lg px-6 md:px-8 py-3 rounded-xl shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:scale-105 flex items-center justify-center mx-auto"
                     >
                         {t('heroButton')} <ArrowRight className="ml-2 h-5 w-5" />
                     </button>
                 </div>
             </div>
 
-            <div className="mt-16 w-full max-w-7xl px-4 mx-auto animate-fade-in-up delay-200">
+            <div className="mt-8 md:mt-16 w-full max-w-7xl px-2 md:px-4 mx-auto animate-fade-in-up delay-200">
                 <img
                     src="/hero-cover.png"
                     alt="Trading AI Analysis"

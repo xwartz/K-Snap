@@ -13,11 +13,11 @@ export function Message({ role, content, imageUrl, result }: MessageProps) {
   if (role === 'user') {
     return (
       <div className="flex justify-start mb-6">
-        <div className="max-w-[85%]">
-          <div className="flex items-start gap-3">
+        <div className="max-w-[95%] md:max-w-[85%]">
+          <div className="flex items-start gap-2 md:gap-3">
             {/* User Avatar */}
             <div className="p-2 bg-accent/10 rounded-full flex-shrink-0">
-              <User className="w-6 h-6 text-accent" />
+              <User className="w-5 h-5 md:w-6 md:h-6 text-accent" />
             </div>
             <div className="flex-1">
               {imageUrl && (
@@ -44,10 +44,10 @@ export function Message({ role, content, imageUrl, result }: MessageProps) {
   // Assistant message
   return (
     <div className="flex justify-start mb-6">
-      <div className="max-w-[85%]">
-        <div className="flex items-start gap-3">
+      <div className="max-w-[95%] md:max-w-[85%]">
+        <div className="flex items-start gap-2 md:gap-3">
           <div className="p-2 bg-primary/10 rounded-full flex-shrink-0">
-            <Bot className="w-6 h-6 text-primary" />
+            <Bot className="w-5 h-5 md:w-6 md:h-6 text-primary" />
           </div>
           <div className="flex-1">
             {content && (

@@ -94,7 +94,7 @@
 
 @layer components {
   .card {
-    @apply bg-card text-card-foreground rounded-lg shadow-md p-6 border border-border;
+    @apply bg-card text-card-foreground rounded-lg shadow-md p-4 md:p-6 border border-border;
   }
 
   .btn-primary {
