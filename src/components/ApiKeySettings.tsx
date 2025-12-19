@@ -5,7 +5,10 @@ const API_KEY_STORAGE = {
   OPENAI: 'openai_api_key',
 }
 
+import { useI18n } from '../utils/i18n'
+
 export function ApiKeySettings() {
+  const { t } = useI18n()
   const [isOpen, setIsOpen] = useState(false)
   const [openrouterKey, setOpenrouterKey] = useState('')
   const [openaiKey, setOpenaiKey] = useState('')
@@ -57,7 +60,7 @@ export function ApiKeySettings() {
             ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-700 text-green-700 dark:text-green-300'
             : 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-300 dark:border-yellow-700 text-yellow-700 dark:text-yellow-300'
         }`}
-        title={hasKey ? 'API Key configured' : 'Configure API Key'}
+        title={hasKey ? t('apiKeyConfigured') : t('apiKeyConfigure')}
       >
         <svg
           className="w-5 h-5"
@@ -73,7 +76,7 @@ export function ApiKeySettings() {
           />
         </svg>
         <span className="text-sm font-medium hidden sm:inline">
-          {hasKey ? 'API Key' : 'Set API Key'}
+          {hasKey ? t('apiKeyLabel') : t('apiKeySet')}
         </span>
       </button>
 
@@ -85,16 +88,16 @@ export function ApiKeySettings() {
           />
           <div className="absolute right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 p-4">
             <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
-              API Key Settings
+              {t('apiKeyTitle')}
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Enter your OpenRouter or OpenAI API key. Keys are stored locally in your browser.
+              {t('apiKeyDescription')}
             </p>
 
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  OpenRouter API Key (Recommended)
+                  {t('apiKeyOpenRouter')}
                 </label>
                 <input
                   type="password"
@@ -109,13 +112,13 @@ export function ApiKeySettings() {
                   rel="noopener noreferrer"
                   className="text-xs text-primary-600 dark:text-primary-400 hover:underline mt-1 inline-block"
                 >
-                  Get OpenRouter API Key →
+                  {t('apiKeyGetOpenRouter')}
                 </a>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  OpenAI API Key (Alternative)
+                  {t('apiKeyOpenAI')}
                 </label>
                 <input
                   type="password"
@@ -130,7 +133,7 @@ export function ApiKeySettings() {
                   rel="noopener noreferrer"
                   className="text-xs text-primary-600 dark:text-primary-400 hover:underline mt-1 inline-block"
                 >
-                  Get OpenAI API Key →
+                  {t('apiKeyGetOpenAI')}
                 </a>
               </div>
             </div>
@@ -141,13 +144,13 @@ export function ApiKeySettings() {
                 disabled={!openrouterKey && !openaiKey}
                 className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                Save
+                {t('apiKeySave')}
               </button>
               <button
                 onClick={handleClear}
                 className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
               >
-                Clear
+                {t('apiKeyClear')}
               </button>
             </div>
           </div>

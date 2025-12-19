@@ -4,6 +4,7 @@ import { ApiKeySettings } from './ApiKeySettings'
 import { LanguageToggle } from './LanguageToggle'
 import { Message } from './Message'
 import { analyzeImage } from '../utils/analyzer'
+import { useI18n } from '../utils/i18n'
 import type { HistoryItem, AnalyzeResponse } from '../types'
 
 interface ChatInterfaceProps {
@@ -18,6 +19,7 @@ type AnalysisStep = {
 }
 
 export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterfaceProps) {
+  const { t } = useI18n()
   const [image, setImage] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -98,11 +100,11 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
 
     // Initialize analysis steps
     const steps: AnalysisStep[] = [
-      { id: '1', label: 'Analyzing chart image...', status: 'processing' },
-      { id: '2', label: 'Identifying trading pair and timeframe...', status: 'pending' },
-      { id: '3', label: 'Fetching real-time market data...', status: 'pending' },
-      { id: '4', label: 'Performing technical analysis...', status: 'pending' },
-      { id: '5', label: 'Generating trading recommendations...', status: 'pending' },
+      { id: '1', label: t('chatStep1'), status: 'processing' },
+      { id: '2', label: t('chatStep2'), status: 'pending' },
+      { id: '3', label: t('chatStep3'), status: 'pending' },
+      { id: '4', label: t('chatStep4'), status: 'pending' },
+      { id: '5', label: t('chatStep5'), status: 'pending' },
     ]
     setAnalysisSteps(steps)
 
@@ -155,7 +157,7 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
     } catch (err) {
       console.error("Analysis error:", err)
       setError(
-        err instanceof Error ? err.message : "Analysis failed, please try again"
+        err instanceof Error ? err.message : t('chatErrorTitle')
       )
       setAnalysisSteps([])
     } finally {
@@ -170,10 +172,10 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
         <div className="px-6 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-foreground">
-              MarketSage AI
+              {t('chatHeaderTitle')}
             </h1>
             <p className="text-sm text-muted-foreground mt-0.5">
-              Professional crypto trading analysis powered by AI
+              {t('chatHeaderSubtitle')}
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -194,10 +196,10 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
               </svg>
             </div>
             <h2 className="text-2xl font-bold mb-2 text-foreground">
-              Hi, I am MarketSage AI
+              {t('chatWelcomeTitle')}
             </h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Whether it's Spot, Futures, or Contracts, just show me the chart. Please upload your K-line screenshot to begin the analysis.
+              {t('chatWelcomeDesc')}
             </p>
           </div>
         )}
@@ -259,7 +261,7 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div>
-                  <h3 className="font-semibold text-destructive mb-1">Analysis Error</h3>
+                  <h3 className="font-semibold text-destructive mb-1">{t('chatErrorTitle')}</h3>
                   <p className="text-sm text-destructive/80">{error}</p>
                 </div>
               </div>
@@ -293,7 +295,7 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <p className="text-sm text-muted-foreground mb-3">
-                Drag and drop your chart here, or click to browse
+                {t('chatDropTitle')}
               </p>
               <label className="inline-block">
                 <input
@@ -304,11 +306,11 @@ export function ChatInterface({ activeAnalysis, onStartAnalysis }: ChatInterface
                   disabled={loading}
                 />
                 <span className="btn-primary cursor-pointer inline-block text-sm">
-                  Upload Chart
+                  {t('chatUploadButton')}
                 </span>
               </label>
               <p className="text-xs text-muted-foreground mt-3">
-                Supports: PNG, JPG, JPEG • Max 5MB • Analysis starts automatically
+                {t('chatSupports')}
               </p>
             </div>
           </div>

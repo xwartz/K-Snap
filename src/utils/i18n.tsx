@@ -87,6 +87,55 @@ const translations = {
 
     // Footer
     footerDisclaimer: 'Disclaimer: For educational purposes only. Not financial advice. Cryptocurrency trading involves high risk.',
+
+    // Result Cards Extra
+    macroEvents: 'Next Week Macro Events',
+    probabilityTitle: 'Trend Probability Distribution',
+    probUp: 'Bullish Probability',
+    probDown: 'Bearish Probability',
+    probSideways: 'Sideways Probability',
+    probReasoning: 'Reasoning',
+    generalReasoning: 'Comprehensive Reasoning',
+
+    // Upload Alerts
+    uploadAlertFile: 'Please upload an image file',
+    uploadAlertSize: 'Image size cannot exceed 5MB',
+
+    // Landing Hero
+    heroTitle: 'From Chart to Clarity',
+    heroSubtitle: 'MarketSage AI',
+    heroDescription: 'Your AI-powered trading edge. Upload any crypto candlestick chart and get a professional-grade investment analysis in seconds.',
+    heroButton: 'Get Started',
+    heroDisclaimer: '⚠️ For educational purposes only. Not financial advice.',
+
+    // API Key Settings
+    apiKeyTitle: 'API Key Settings',
+    apiKeyDescription: 'Enter your OpenRouter or OpenAI API key. Keys are stored locally in your browser.',
+    apiKeyOpenRouter: 'OpenRouter API Key (Recommended)',
+    apiKeyOpenAI: 'OpenAI API Key (Alternative)',
+    apiKeyGetOpenRouter: 'Get OpenRouter API Key →',
+    apiKeyGetOpenAI: 'Get OpenAI API Key →',
+    apiKeySave: 'Save',
+    apiKeyClear: 'Clear',
+    apiKeyConfigured: 'API Key configured',
+    apiKeyConfigure: 'Configure API Key',
+    apiKeyLabel: 'API Key',
+    apiKeySet: 'Set API Key',
+
+    // Chat Interface
+    chatHeaderTitle: 'MarketSage AI',
+    chatHeaderSubtitle: 'Professional crypto trading analysis powered by AI',
+    chatWelcomeTitle: 'Hi, I am MarketSage AI',
+    chatWelcomeDesc: "Whether it's Spot, Futures, or Contracts, just show me the chart. Please upload your K-line screenshot to begin the analysis.",
+    chatDropTitle: 'Drag and drop your chart here, or click to browse',
+    chatUploadButton: 'Upload Chart',
+    chatSupports: 'Supports: PNG, JPG, JPEG • Max 5MB • Analysis starts automatically',
+    chatErrorTitle: 'Analysis Error',
+    chatStep1: 'Analyzing chart image...',
+    chatStep2: 'Identifying trading pair and timeframe...',
+    chatStep3: 'Fetching real-time market data...',
+    chatStep4: 'Performing technical analysis...',
+    chatStep5: 'Generating trading recommendations...',
   },
   zh: {
     // Header
@@ -172,6 +221,55 @@ const translations = {
 
     // Footer
     footerDisclaimer: '免责声明：本系统仅供学习参考，不构成投资建议。加密货币投资存在高风险。',
+
+    // Result Cards Extra
+    macroEvents: '下周宏观经济事件',
+    probabilityTitle: '走势概率分布',
+    probUp: '上涨概率',
+    probDown: '下跌概率',
+    probSideways: '震荡概率',
+    probReasoning: '判断依据',
+    generalReasoning: '综合判断依据',
+
+    // Upload Alerts
+    uploadAlertFile: '请上传图片文件',
+    uploadAlertSize: '图片大小不能超过5MB',
+
+    // Landing Hero
+    heroTitle: '从图表到洞察',
+    heroSubtitle: 'MarketSage AI',
+    heroDescription: '您的 AI 交易助手。上传任意加密货币 K 线图，几秒钟内获得专业级投资分析。',
+    heroButton: '立即开始',
+    heroDisclaimer: '⚠️ 仅供学习参考，不构成财务建议。',
+
+    // API Key Settings
+    apiKeyTitle: 'API Key 设置',
+    apiKeyDescription: '输入您的 OpenRouter 或 OpenAI API Key。密钥直接存储在您的浏览器中。',
+    apiKeyOpenRouter: 'OpenRouter API Key (推荐)',
+    apiKeyOpenAI: 'OpenAI API Key (备选)',
+    apiKeyGetOpenRouter: '获取 OpenRouter Key →',
+    apiKeyGetOpenAI: '获取 OpenAI Key →',
+    apiKeySave: '保存',
+    apiKeyClear: '清除',
+    apiKeyConfigured: 'API Key 已配置',
+    apiKeyConfigure: '配置 API Key',
+    apiKeyLabel: 'API Key',
+    apiKeySet: '设置 Key',
+
+    // Chat Interface
+    chatHeaderTitle: 'MarketSage AI',
+    chatHeaderSubtitle: 'AI 驱动的专业加密货币交易分析',
+    chatWelcomeTitle: '你好，我是 MarketSage AI',
+    chatWelcomeDesc: '无论是现货、合约还是期权，只要给我看图表，我就能通过 AI 进行分析。请上传您的 K 线截图以开始。',
+    chatDropTitle: '拖放图表到这里，或点击浏览',
+    chatUploadButton: '上传图表',
+    chatSupports: '支持: PNG, JPG, JPEG • 最大 5MB • 自动开始分析',
+    chatErrorTitle: '分析未完成',
+    chatStep1: '正在分析图表...',
+    chatStep2: '正在识别交易对和时间周期...',
+    chatStep3: '正在获取实时市场数据...',
+    chatStep4: '正在进行技术分析...',
+    chatStep5: '正在生成交易建议...',
   },
 }
 
@@ -186,13 +284,7 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
 const getStoredLanguage = (): Language => {
-  const stored = localStorage.getItem('language')
-  if (stored === 'en' || stored === 'zh') {
-    return stored
-  }
-  // Detect browser language
-  const browserLang = navigator.language.toLowerCase()
-  return browserLang.startsWith('zh') ? 'zh' : 'en'
+  return 'zh'
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {

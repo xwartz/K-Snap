@@ -39,7 +39,7 @@ export function ResultCards({ result }: ResultCardsProps) {
                 : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
             }`}
           >
-            Confidence: {(analysis.confidence * 100).toFixed(0)}%
+            {t('confidence')}: {(analysis.confidence * 100).toFixed(0)}%
           </span>
         </div>
       </div>
@@ -48,7 +48,7 @@ export function ResultCards({ result }: ResultCardsProps) {
       {decision.macroEvents && decision.macroEvents.length > 0 && (
         <div className="card">
           <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
-            下周宏观经济事件
+            {t('macroEvents')}
           </h3>
           <div className="space-y-3">
             {decision.macroEvents.map((event, i) => (
@@ -100,13 +100,13 @@ export function ResultCards({ result }: ResultCardsProps) {
       {decision.probability && (
         <div className="card">
           <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
-            走势概率分布
+            {t('probabilityTitle')}
           </h3>
           <div className="space-y-4">
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-green-600 dark:text-green-400 font-medium">
-                  ↑ 上涨概率
+                  ↑ {t('probUp')}
                 </span>
                 <span className="font-bold text-lg">
                   {decision.probability.bullish}%
@@ -123,7 +123,7 @@ export function ResultCards({ result }: ResultCardsProps) {
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-red-600 dark:text-red-400 font-medium">
-                  ↓ 下跌概率
+                  ↓ {t('probDown')}
                 </span>
                 <span className="font-bold text-lg">
                   {decision.probability.bearish}%
@@ -140,7 +140,7 @@ export function ResultCards({ result }: ResultCardsProps) {
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-gray-600 dark:text-gray-400 font-medium">
-                  ↔ 横盘概率
+                  ↔ {t('probSideways')}
                 </span>
                 <span className="font-bold text-lg">
                   {decision.probability.neutral}%
@@ -156,7 +156,7 @@ export function ResultCards({ result }: ResultCardsProps) {
 
             <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <p className="text-xs text-blue-900 dark:text-blue-100 leading-relaxed">
-                <span className="font-semibold">判断依据：</span>
+                <span className="font-semibold">{t('probReasoning')}：</span>
                 {decision.probability.reasoning}
               </p>
             </div>
@@ -167,12 +167,12 @@ export function ResultCards({ result }: ResultCardsProps) {
       {/* 技术分析 */}
       <div className="card">
         <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
-          技术分析
+          {t('technicalAnalysis')}
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
-              趋势
+              {t('trend')}
             </p>
             <p className="font-semibold text-base">
               {analysis.trend === "up"
@@ -184,7 +184,7 @@ export function ResultCards({ result }: ResultCardsProps) {
           </div>
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
-              市场状态
+              {t('marketState')}
             </p>
             <p className="font-semibold text-base">
               {analysis.marketState === "breakout"
@@ -196,7 +196,7 @@ export function ResultCards({ result }: ResultCardsProps) {
           </div>
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
-              波动率
+              {t('volatility')}
             </p>
             <span
               className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${
@@ -216,7 +216,7 @@ export function ResultCards({ result }: ResultCardsProps) {
           </div>
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
-              当前价格
+              {t('currentPrice')}
             </p>
             <p className="font-semibold text-base">
               ${realtime.currentPrice.toLocaleString()}{" "}
@@ -277,7 +277,7 @@ export function ResultCards({ result }: ResultCardsProps) {
             {analysis.indicators.bollingerBands && (
               <div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
-                  布林带
+                  {t('resistanceLevels').split('压力位')[0] || '布林带'}
                 </p>
                 <div className="flex items-center gap-2">
                   <span
@@ -306,7 +306,7 @@ export function ResultCards({ result }: ResultCardsProps) {
             {analysis.indicators.volume && (
               <div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
-                  成交量
+                  {t('volatility').split('波动率')[0] || '成交量'}
                 </p>
                 <div className="flex items-center gap-2">
                   <span
@@ -338,7 +338,7 @@ export function ResultCards({ result }: ResultCardsProps) {
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">
-              支撑位
+              {t('supportLevels')}
             </p>
             <div className="flex flex-wrap gap-1">
               {analysis.support.map((s, i) => (
@@ -353,7 +353,7 @@ export function ResultCards({ result }: ResultCardsProps) {
           </div>
           <div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">
-              压力位
+              {t('resistanceLevels')}
             </p>
             <div className="flex flex-wrap gap-1">
               {analysis.resistance.map((r, i) => (
@@ -383,14 +383,14 @@ export function ResultCards({ result }: ResultCardsProps) {
       {/* 操作建议 */}
       <div className="card">
         <h3 className="text-base font-semibold mb-4 text-gray-800 dark:text-gray-200">
-          操作建议
+          {t('tradingRecommendations')}
         </h3>
 
         <div className="space-y-4">
           {/* 现货 */}
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
             <h4 className="font-semibold mb-3 text-blue-900 dark:text-blue-100">
-              现货
+              {t('spot')}
             </h4>
             <p className="text-sm mb-2">
               <span className="text-gray-600 dark:text-gray-400">操作:</span>{" "}
@@ -413,7 +413,7 @@ export function ResultCards({ result }: ResultCardsProps) {
           <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-purple-900 dark:text-purple-100">
-                永续合约
+                {t('futures')}
               </h4>
               <span
                 className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${
@@ -450,7 +450,7 @@ export function ResultCards({ result }: ResultCardsProps) {
           {/* 期权 */}
           <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
             <h4 className="font-semibold mb-3 text-amber-900 dark:text-amber-100">
-              期权
+              {t('options')}
             </h4>
             <p className="text-sm mb-2">
               <span className="text-gray-600 dark:text-gray-400">策略:</span>{" "}
@@ -466,7 +466,7 @@ export function ResultCards({ result }: ResultCardsProps) {
         {decision.reasoning && (
           <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
             <h4 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">
-              综合判断依据
+              {t('generalReasoning')}
             </h4>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               {decision.reasoning}
@@ -478,7 +478,7 @@ export function ResultCards({ result }: ResultCardsProps) {
       {/* 免责声明 */}
       <div className="card border-l-4 border-amber-500">
         <h3 className="text-base font-semibold mb-3 text-amber-600 dark:text-amber-400">
-          风险提示
+          {t('riskWarnings')}
         </h3>
         <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded border border-amber-200 dark:border-amber-800">
           <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed">

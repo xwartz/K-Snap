@@ -12,12 +12,12 @@ export function UploadCard({ onImageUpload }: UploadCardProps) {
 
   const handleFile = useCallback((file: File) => {
     if (!file.type.startsWith('image/')) {
-      alert('请上传图片文件')
+      alert(t('uploadAlertFile'))
       return
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      alert('图片大小不能超过5MB')
+      alert(t('uploadAlertSize'))
       return
     }
 
