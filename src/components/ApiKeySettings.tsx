@@ -57,8 +57,8 @@ export function ApiKeySettings() {
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
           hasKey
-            ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-700 text-green-700 dark:text-green-300'
-            : 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-300 dark:border-yellow-700 text-yellow-700 dark:text-yellow-300'
+            ? 'bg-success/10 border-success/30 text-success'
+            : 'bg-warning/10 border-warning/30 text-warning'
         }`}
         title={hasKey ? t('apiKeyConfigured') : t('apiKeyConfigure')}
       >
@@ -83,20 +83,20 @@ export function ApiKeySettings() {
       {isOpen && (
         <>
           <div
-            className="fixed inset-0 z-40"
+            className="fixed inset-0 z-40 bg-black/60"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50 p-4">
-            <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+          <div className="absolute right-0 mt-2 w-96 bg-card text-card-foreground rounded-lg shadow-xl border border-border z-50 p-4">
+            <h3 className="text-lg font-semibold mb-3 text-foreground">
               {t('apiKeyTitle')}
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-sm text-muted-foreground mb-4">
               {t('apiKeyDescription')}
             </p>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   {t('apiKeyOpenRouter')}
                 </label>
                 <input
@@ -104,20 +104,20 @@ export function ApiKeySettings() {
                   value={openrouterKey}
                   onChange={(e) => setOpenrouterKey(e.target.value)}
                   placeholder="sk-or-v1-..."
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-input rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
                 <a
                   href="https://openrouter.ai/keys"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-primary-600 dark:text-primary-400 hover:underline mt-1 inline-block"
+                  className="text-xs text-primary hover:underline mt-1 inline-block"
                 >
                   {t('apiKeyGetOpenRouter')}
                 </a>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   {t('apiKeyOpenAI')}
                 </label>
                 <input
@@ -125,30 +125,30 @@ export function ApiKeySettings() {
                   value={openaiKey}
                   onChange={(e) => setOpenaiKey(e.target.value)}
                   placeholder="sk-..."
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-input rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
                 <a
                   href="https://platform.openai.com/api-keys"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-primary-600 dark:text-primary-400 hover:underline mt-1 inline-block"
+                  className="text-xs text-primary hover:underline mt-1 inline-block"
                 >
                   {t('apiKeyGetOpenAI')}
                 </a>
               </div>
             </div>
 
-            <div className="flex gap-2 mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex gap-2 mt-4 pt-4 border-t border-border">
               <button
                 onClick={handleSave}
                 disabled={!openrouterKey && !openaiKey}
-                className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {t('apiKeySave')}
               </button>
               <button
                 onClick={handleClear}
-                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:opacity-80 transition-colors"
               >
                 {t('apiKeyClear')}
               </button>

@@ -1,138 +1,197 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: 195 53% 96%;
-      /* Soft Teal Light */
-      --foreground: 195 20% 25%;
-      --card: 0 0% 100%;
-    --card-foreground: 195 20% 25%;
-      --popover: 0 0% 100%;
-    --popover-foreground: 195 20% 25%;
-      --primary: 207 90% 54%;
-      /* Blue */
-      --primary-foreground: 0 0% 100%;
-    --secondary: 195 53% 90%;
-      --secondary-foreground: 195 20% 25%;
-      --muted: 195 53% 94%;
-      --muted-foreground: 195 10% 45%;
-      --accent: 207 90% 54%;
-      /* Blue */
-      --accent-foreground: 0 0% 100%;
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 0 0% 98%;
-    --border: 195 20% 88%;
-      --input: 195 20% 88%;
-      --ring: 207 90% 54%;
-      --radius: 0.5rem;
-    --chart-1: 207 90% 54%;
-      --chart-2: 195 53% 60%;
-      --chart-3: 207 70% 65%;
-      --chart-4: 195 40% 70%;
-      --chart-5: 195 30% 55%;
-      --sidebar-background: 195 30% 95%;
-      --sidebar-foreground: 195 20% 25%;
-      --sidebar-primary: 207 90% 54%;
-      --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 100%;
-      --sidebar-accent-foreground: 195 20% 15%;
-      --sidebar-border: 195 20% 88%;
-      --sidebar-ring: 207 90% 54%;
-    }
+/* Theme Configuration for Tailwind CSS 4 */
+@theme {
+  /* Colors - Light Mode defaults */
+  --color-background: hsl(195 53% 96%);
+  --color-foreground: hsl(195 20% 25%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(195 20% 25%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(195 20% 25%);
+  --color-primary: hsl(207 90% 54%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(195 53% 90%);
+  --color-secondary-foreground: hsl(195 20% 25%);
+  --color-muted: hsl(195 53% 94%);
+  --color-muted-foreground: hsl(195 10% 45%);
+  --color-accent: hsl(207 90% 54%);
+  --color-accent-foreground: hsl(0 0% 100%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  --color-border: hsl(195 20% 88%);
+  --color-input: hsl(195 20% 88%);
+  --color-ring: hsl(207 90% 54%);
+  --color-sidebar: hsl(195 30% 95%);
+  --color-sidebar-foreground: hsl(195 20% 25%);
+  --color-sidebar-primary: hsl(207 90% 54%);
+  --color-sidebar-primary-foreground: hsl(0 0% 100%);
+  --color-sidebar-accent: hsl(0 0% 100%);
+  --color-sidebar-accent-foreground: hsl(195 20% 15%);
+  --color-sidebar-border: hsl(195 20% 88%);
+  --color-sidebar-ring: hsl(207 90% 54%);
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
 
-    .dark {
-    --background: 195 20% 12%;
-      /* Dark Gray */
-      --foreground: 195 20% 98%;
-      --card: 195 20% 15%;
-      --card-foreground: 195 20% 98%;
-      --popover: 195 20% 15%;
-      --popover-foreground: 195 20% 98%;
-      --primary: 207 90% 54%;
-      /* Blue */
-      --primary-foreground: 0 0% 100%;
-    --secondary: 195 20% 20%;
-      --secondary-foreground: 195 20% 98%;
-      --muted: 195 20% 22%;
-      --muted-foreground: 195 10% 65%;
-      --accent: 207 90% 54%;
-      /* Blue */
-      --accent-foreground: 0 0% 100%;
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 0 0% 98%;
-    --border: 195 20% 25%;
-      --input: 195 20% 25%;
-      --ring: 207 90% 54%;
-      --chart-1: 207 90% 54%;
-      --chart-2: 195 53% 60%;
-      --chart-3: 207 70% 65%;
-      --chart-4: 195 40% 70%;
-      --chart-5: 195 30% 55%;
-      --sidebar-background: 195 20% 14%;
-      --sidebar-foreground: 195 20% 96%;
-      --sidebar-primary: 207 90% 54%;
-      --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 195 20% 20%;
-      --sidebar-accent-foreground: 195 20% 96%;
-      /* Fixed contrast */
-      --sidebar-border: 195 20% 25%;
-      --sidebar-ring: 207 90% 54%;
-    }
-  }
+  /* Chart colors */
+  --color-chart-1: hsl(207 90% 54%);
+  --color-chart-2: hsl(195 53% 60%);
+  --color-chart-3: hsl(207 70% 65%);
+  --color-chart-4: hsl(195 40% 70%);
+  --color-chart-5: hsl(195 30% 55%);
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  }
+  /* Border radius */
+  --radius-sm: calc(0.5rem - 4px);
+  --radius-md: calc(0.5rem - 2px);
+  --radius-lg: 0.5rem;
+
+  /* Font family */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-@layer components {
+/* Dark Mode Overrides */
+.dark {
+  --color-background: hsl(195 20% 12%);
+  --color-foreground: hsl(195 20% 98%);
+  --color-card: hsl(195 20% 15%);
+  --color-card-foreground: hsl(195 20% 98%);
+  --color-popover: hsl(195 20% 15%);
+  --color-popover-foreground: hsl(195 20% 98%);
+  --color-primary: hsl(207 90% 54%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(195 20% 20%);
+  --color-secondary-foreground: hsl(195 20% 98%);
+  --color-muted: hsl(195 20% 22%);
+  --color-muted-foreground: hsl(195 10% 65%);
+  --color-accent: hsl(207 90% 54%);
+  --color-accent-foreground: hsl(0 0% 100%);
+  --color-destructive: hsl(0 62.8% 30.6%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  --color-border: hsl(195 20% 25%);
+  --color-input: hsl(195 20% 25%);
+  --color-ring: hsl(207 90% 54%);
+  --color-sidebar: hsl(195 20% 14%);
+  --color-sidebar-foreground: hsl(195 20% 96%);
+  --color-sidebar-primary: hsl(207 90% 54%);
+  --color-sidebar-primary-foreground: hsl(0 0% 100%);
+  --color-sidebar-accent: hsl(195 20% 20%);
+  --color-sidebar-accent-foreground: hsl(195 20% 96%);
+  --color-sidebar-border: hsl(195 20% 25%);
+  --color-sidebar-ring: hsl(207 90% 54%);
+  --color-chart-1: hsl(207 90% 54%);
+  --color-chart-2: hsl(195 53% 60%);
+  --color-chart-3: hsl(207 70% 65%);
+  --color-chart-4: hsl(195 40% 70%);
+  --color-chart-5: hsl(195 30% 55%);
+}
+
+/* Base Styles */
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Component Classes */
+.card {
+  background-color: var(--color-card);
+  color: var(--color-card-foreground);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
   .card {
-    @apply bg-card text-card-foreground rounded-lg shadow-md p-4 md:p-6 border border-border;
-  }
-
-  .btn-primary {
-    @apply bg-primary text-primary-foreground hover:opacity-90 font-medium py-2 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-  }
-
-  .badge-success {
-    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
-  }
-
-  .badge-danger {
-    @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
-  }
-
-  .badge-warning {
-    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
-  }
-
-  .badge-neutral {
-    @apply bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200;
+    padding: 1.5rem;
   }
 }
 
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-lg);
+  transition: all 200ms ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-success {
+  background-color: rgb(220 252 231);
+  color: rgb(22 101 52);
+}
+
+.dark .badge-success {
+  background-color: rgb(20 83 45);
+  color: rgb(187 247 208);
+}
+
+.badge-danger {
+  background-color: rgb(254 226 226);
+  color: rgb(153 27 27);
+}
+
+.dark .badge-danger {
+  background-color: rgb(127 29 29);
+  color: rgb(254 202 202);
+}
+
+.badge-warning {
+  background-color: rgb(254 249 195);
+  color: rgb(113 63 18);
+}
+
+.dark .badge-warning {
+  background-color: rgb(113 63 18);
+  color: rgb(254 240 138);
+}
+
+.badge-neutral {
+  background-color: rgb(243 244 246);
+  color: rgb(31 41 55);
+}
+
+.dark .badge-neutral {
+  background-color: rgb(55 65 81);
+  color: rgb(229 231 235);
+}
+
+/* Grid Pattern Background */
 .bg-grid-pattern {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+  background-image: linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
 }
 
+/* Animations */
 @keyframes fade-in {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -143,7 +202,6 @@
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
