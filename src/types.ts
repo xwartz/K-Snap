@@ -21,9 +21,30 @@ export interface DetectedInfo {
   priceRange: string
 }
 
+// 技术指标数据
+export interface TechnicalIndicators {
+  macd?: {
+    trend: 'bullish' | 'bearish' | 'neutral'
+    signal: string
+  }
+  rsi?: {
+    value: number
+    signal: 'overbought' | 'oversold' | 'neutral'
+  }
+  bollingerBands?: {
+    position: 'upper' | 'middle' | 'lower'
+    squeeze: boolean
+  }
+  volume?: {
+    trend: 'increasing' | 'decreasing' | 'stable'
+    anomaly: boolean
+  }
+}
+
 // 技术分析结果
 export interface TechnicalAnalysis {
   trend: Trend
+  indicators: TechnicalIndicators
   support: string[]
   resistance: string[]
   pattern?: string
@@ -60,20 +81,35 @@ export interface OptionsAdvice {
   logic: string
 }
 
+// 宏观事件
+export interface MacroEvent {
+  date: string
+  event: string
+  importance: 'high' | 'medium' | 'low'
+  expectedImpact?: string
+}
+
+// 概率分布
+export interface ProbabilityDistribution {
+  bullish: number // 上涨概率 0-100
+  bearish: number // 下跌概率 0-100
+  neutral: number // 横盘概率 0-100
+  reasoning: string // 概率判断依据
+}
+
 // 交易决策
 export interface TradingDecision {
+  macroEvents: MacroEvent[] // 下周宏观事件
+  probability: ProbabilityDistribution // 概率分布
   spot: SpotAdvice
   futures: FuturesAdvice
-  options?: OptionsAdvice
-  priceRange: string
-  risks: string[]
+  options: OptionsAdvice
+  reasoning: string // 综合判断依据
 }
 
 // 分析请求
 export interface AnalyzeRequest {
   image: string // base64
-  macroScenarios: string[]
-  period: string
 }
 
 // 分析响应

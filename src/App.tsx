@@ -14,9 +14,9 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const { t } = useI18n()
 
-  const handleAnalyze = async (scenarios: string[], period: string) => {
+  const handleAnalyze = async () => {
     if (!image) {
-      alert(t('uploadAlert'))
+      alert(t("uploadAlert"))
       return
     }
 
@@ -29,22 +29,20 @@ function App() {
       let data: AnalyzeResponse
 
       if (isDev) {
-        data = await analyzeImage(image, scenarios, period)
+        data = await analyzeImage(image)
       } else {
-        const response = await fetch('/api/analyze', {
-          method: 'POST',
+        const response = await fetch("/api/analyze", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             image,
-            macroScenarios: scenarios,
-            period,
           }),
         })
 
         if (!response.ok) {
-          throw new Error('Analysis request failed')
+          throw new Error("Analysis request failed")
         }
 
         data = await response.json()
@@ -53,14 +51,16 @@ function App() {
       setResult(data)
 
       setTimeout(() => {
-        document.getElementById('results')?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+        document.getElementById("results")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
         })
       }, 100)
     } catch (err) {
-      console.error('Analysis error:', err)
-      setError(err instanceof Error ? err.message : 'Analysis failed, please try again')
+      console.error("Analysis error:", err)
+      setError(
+        err instanceof Error ? err.message : "Analysis failed, please try again"
+      )
     } finally {
       setLoading(false)
     }
