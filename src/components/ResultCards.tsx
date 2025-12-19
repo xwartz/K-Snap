@@ -236,60 +236,100 @@ export function ResultCards({ result }: ResultCardsProps) {
 
         {/* 技术指标 */}
         {analysis.indicators && (
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-100 dark:border-gray-800 pt-4">
             {analysis.indicators.macd && (
-              <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+              <div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
                   MACD
                 </p>
-                <p className="text-sm text-gray-900 dark:text-gray-100">
+                <p className="font-medium text-sm text-gray-900 dark:text-gray-100 line-clamp-2">
                   {analysis.indicators.macd.signal}
                 </p>
               </div>
             )}
             {analysis.indicators.rsi && (
-              <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+              <div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
                   RSI
                 </p>
-                <p className="text-sm text-gray-900 dark:text-gray-100">
-                  {analysis.indicators.rsi.value} -{" "}
-                  {analysis.indicators.rsi.signal === "overbought"
-                    ? "超买"
-                    : analysis.indicators.rsi.signal === "oversold"
-                    ? "超卖"
-                    : "中性"}
-                </p>
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold text-base">
+                    {analysis.indicators.rsi.value}
+                  </span>
+                  <span
+                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                      analysis.indicators.rsi.signal === "overbought"
+                        ? "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
+                        : analysis.indicators.rsi.signal === "oversold"
+                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
+                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    {analysis.indicators.rsi.signal === "overbought"
+                      ? "超买"
+                      : analysis.indicators.rsi.signal === "oversold"
+                      ? "超卖"
+                      : "中性"}
+                  </span>
+                </div>
               </div>
             )}
             {analysis.indicators.bollingerBands && (
-              <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+              <div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
                   布林带
                 </p>
-                <p className="text-sm text-gray-900 dark:text-gray-100">
-                  {analysis.indicators.bollingerBands.position === "upper"
-                    ? "上轨"
-                    : analysis.indicators.bollingerBands.position === "lower"
-                    ? "下轨"
-                    : "中轨"}
-                  {analysis.indicators.bollingerBands.squeeze ? " - 收窄" : ""}
-                </p>
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                      analysis.indicators.bollingerBands.position === "upper"
+                        ? "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
+                        : analysis.indicators.bollingerBands.position === "lower"
+                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
+                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    {analysis.indicators.bollingerBands.position === "upper"
+                      ? "上轨"
+                      : analysis.indicators.bollingerBands.position === "lower"
+                      ? "下轨"
+                      : "中轨"}
+                  </span>
+                  {analysis.indicators.bollingerBands.squeeze && (
+                    <span className="text-xs text-yellow-600 dark:text-yellow-400 font-medium">
+                      (收窄)
+                    </span>
+                  )}
+                </div>
               </div>
             )}
             {analysis.indicators.volume && (
-              <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+              <div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide">
                   成交量
                 </p>
-                <p className="text-sm text-gray-900 dark:text-gray-100">
-                  {analysis.indicators.volume.trend === "increasing"
-                    ? "放量"
-                    : analysis.indicators.volume.trend === "decreasing"
-                    ? "缩量"
-                    : "稳定"}
-                  {analysis.indicators.volume.anomaly ? " - 异常" : ""}
-                </p>
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                      analysis.indicators.volume.trend === "increasing"
+                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
+                        : analysis.indicators.volume.trend === "decreasing"
+                        ? "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
+                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    {analysis.indicators.volume.trend === "increasing"
+                      ? "放量"
+                      : analysis.indicators.volume.trend === "decreasing"
+                      ? "缩量"
+                      : "稳定"}
+                  </span>
+                  {analysis.indicators.volume.anomaly && (
+                    <span className="text-xs text-red-500 font-medium">
+                      ! 异常
+                    </span>
+                  )}
+                </div>
               </div>
             )}
           </div>

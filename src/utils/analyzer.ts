@@ -92,7 +92,7 @@ async function analyzeImageWithAI(
     "priceRange": "$9,5000 - $10,5000"
   },
   "analysis": {
-    "trend": "up",
+    "trend": "上涨",
     "indicators": {
       "macd": {
         "trend": "bullish",
@@ -113,8 +113,8 @@ async function analyzeImageWithAI(
     },
     "support": ["$9,5000 附近", "$9,2000 附近"],
     "resistance": ["$10,5000 附近", "$11,0000 附近"],
-    "pattern": "ascending_triangle",
-    "marketState": "breakout",
+    "pattern": "上升三角形",
+    "marketState": "突破",
     "volatility": "medium",
     "confidence": 0.85
   }
